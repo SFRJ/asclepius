@@ -1,0 +1,13 @@
+version: "3"
+services:
+  db:
+    image: "postgres:11"
+    container_name: "asclepiusdb"
+    ports:
+      - "54320:5432"
+    environment:
+      - POSTGRES_PASSWORD=somepassword
+    volumes:
+      - asclepius_dbdata:/var/lib/postgresql/data
+volumes:
+  asclepius_dbdata:

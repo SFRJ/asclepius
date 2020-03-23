@@ -1,0 +1,6 @@
+#Database Configuration
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:54320/asclepiusdb
+    username: postgres
+    password: somepassword

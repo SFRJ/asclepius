@@ -1,0 +1,25 @@
+-- 0) Run docker-compose up -d to init the postgres container
+-- 1) Create the database with: psql -h localhost -p 54320 -U postgres -c "create database asclepiusdb;"
+-- 2) Perform a migration with: ./gradlew flywayMigrate -i <-This command on the terminal will trigger the migration
+-- 3) Connect to the docker container that runs the database with: docker exec -it 658ce32b912e /bin/bash
+-- 4) Check that the database exists with \list
+-- 5) Connect to the database with: psql -U postgres asclepiusdb
+-- 6) Check that the tables are created with \dt
+
+CREATE TABLE LOCATIONS(
+    location_pk SERIAL PRIMARY KEY,
+    latitude DECIMAL,
+    longitude DECIMAL,
+    address TEXT,
+    location_type TEXT
+);
+
+CREATE TABLE PERSONS(
+    persons_pk SERIAL PRIMARY KEY,
+    location_pk INTEGER REFERENCES LOCATIONS (location_pk),
+    age INTEGER,
+    sex TEXT,
+    infected BOOLEAN,
+    alive BOOLEAN,
+    chronic BOOLEAN
+);
