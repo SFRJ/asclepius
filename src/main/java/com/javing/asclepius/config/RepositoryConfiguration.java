@@ -3,7 +3,6 @@ package com.javing.asclepius.config;
 import org.jooq.impl.DataSourceConnectionProvider;
 import org.jooq.impl.DefaultConfiguration;
 import org.jooq.impl.DefaultDSLContext;
-import org.jooq.impl.DefaultExecuteListenerProvider;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
