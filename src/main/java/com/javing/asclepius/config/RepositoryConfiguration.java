@@ -1,20 +1,44 @@
 package com.javing.asclepius.config;
 
-import com.javing.asclepius.repositories.LocationsRepository;
-import lombok.RequiredArgsConstructor;
-import org.jooq.DSLContext;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.jooq.impl.DataSourceConnectionProvider;
+import org.jooq.impl.DefaultConfiguration;
+import org.jooq.impl.DefaultDSLContext;
+import org.jooq.impl.DefaultExecuteListenerProvider;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Repository;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+import org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy;
 
+import javax.sql.DataSource;
 
-@Repository
-@RequiredArgsConstructor
+@Configuration
 public class RepositoryConfiguration {
 
+    @Primary
     @Bean
-    LocationsRepository locationsRepository(@Autowired final DSLContext dslContext) {
-        return new LocationsRepository(dslContext);
+    @ConfigurationProperties(prefix = "spring.datasource")
+    public DataSource dataSource() {
+        return DataSourceBuilder.create().build();
     }
 
+    @Bean
+    public DataSourceConnectionProvider connectionProvider(final DataSource dataSource) {
+        return new DataSourceConnectionProvider
+                (new TransactionAwareDataSourceProxy(dataSource));
+    }
+
+    @Bean
+    public DefaultDSLContext dsl(DefaultConfiguration defaultConfiguration) {
+        return new DefaultDSLContext(defaultConfiguration);
+    }
+
+    @Bean
+    public DefaultConfiguration configuration(DataSourceConnectionProvider dataSourceConnectionProvider) {
+        DefaultConfiguration jooqConfiguration = new DefaultConfiguration();
+        jooqConfiguration.set(dataSourceConnectionProvider);
+
+        return jooqConfiguration;
+    }
 }

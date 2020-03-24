@@ -32,9 +32,11 @@ dependencies {
     implementation 'org.jooq:jooq'
     implementation 'org.jooq:jooq-codegen'
     jooqRuntime 'org.postgresql:postgresql:42.2.11'
+    compile 'org.postgresql:postgresql:42.2.11'
     implementation 'org.projectlombok:lombok:1.18.8'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-jooq'
     implementation 'io.vavr:vavr:0.10.2'
 
     testCompile group: 'junit', name: 'junit', version: '4.12'
