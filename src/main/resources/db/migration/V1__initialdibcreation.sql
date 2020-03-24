@@ -5,12 +5,12 @@
 -- 4) Check that the database exists with \list
 -- 5) Connect to the database with: psql -U postgres asclepiusdb
 -- 6) Check that the tables are created with \dt
+-- 7) use the alias 'g' so that the build triggers the Jooq code generation
 
 CREATE TABLE LOCATIONS(
     location_pk SERIAL PRIMARY KEY,
     latitude DECIMAL,
     longitude DECIMAL,
-    address TEXT,
     location_type TEXT
 );
 

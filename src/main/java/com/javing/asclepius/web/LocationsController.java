@@ -6,8 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.UUID;
-
 @RestController
 @RequiredArgsConstructor
 public class LocationsController {
@@ -15,7 +13,7 @@ public class LocationsController {
     private final LocationsManagementService locationsManagementService;
 
     @RequestMapping(value = "/locations/new", consumes = "application/json", method = RequestMethod.POST)
-    public ResponseEntity<UUID> newLocation(@RequestBody NewLocationRequest newLocationRequest) {
+    public ResponseEntity<Integer> newLocation(@RequestBody NewLocationRequest newLocationRequest) {
 
         return ResponseEntity.ok().body(locationsManagementService
                 .newLocation(newLocationRequest.getLocationType(), newLocationRequest.getAddress())
