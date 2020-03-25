@@ -35,12 +35,5 @@ public class LocationsRepository {
                 .fetchOne().getValue(LOCATIONS.LOCATION_PK));
     }
 
-    public Try<Option<Location>> getLocation(Integer id) {
-        return null;
-    }
-
-    public Try<Integer> updateLocation(Integer id,Location location) {
-        return null;
-    }
 
 }
