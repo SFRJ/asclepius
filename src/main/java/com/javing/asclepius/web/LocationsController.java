@@ -1,6 +1,5 @@
 package com.javing.asclepius.web;
 
-import com.javing.asclepius.domain.exceptions.LocationCreationException;
 import com.javing.asclepius.services.LocationsManagementService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -13,10 +12,8 @@ public class LocationsController {
     private final LocationsManagementService locationsManagementService;
 
     @RequestMapping(value = "/locations/new", consumes = "application/json", method = RequestMethod.POST)
-    public ResponseEntity<Integer> newLocation(@RequestBody NewLocationRequest newLocationRequest) {
+    public ResponseEntity<String> newLocation() {
 
-        return ResponseEntity.ok().body(locationsManagementService
-                .newLocation(newLocationRequest.getLocationType(), newLocationRequest.getAddress())
-                .getOrElseThrow(() -> new LocationCreationException("Unable to create Location")));
+        return ResponseEntity.ok().body(locationsManagementService.newLocation());
     }
 }

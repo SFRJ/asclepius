@@ -1,22 +1,21 @@
 package com.javing.asclepius.services;
 
 import com.javing.asclepius.repositories.LocationsRepository;
-import io.vavr.control.Try;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import static com.javing.asclepius.domain.Location.location;
 
 @AllArgsConstructor
 @Service
 public class LocationsManagementService {
 
-    private final CoordinatesFindingService coordinatesFindingService;
+    private final IpGeolocationService ipGeolocationService;
     private final LocationsRepository locationsRepository;
 
-    public Try<Integer> newLocation(String locationType, String address) {
+    public String newLocation() {
 
-        return locationsRepository.newLocation(location(coordinatesFindingService
-                .findCoordinatesFor(address), locationType));
+
+        return locationsRepository.newLocation(ipGeolocationService.find()
+                .getOrElseThrow(() -> new RuntimeException("Unable to get IP details")))
+                .getOrElseThrow(() -> new RuntimeException("Unable to save to database"));
     }
 }
