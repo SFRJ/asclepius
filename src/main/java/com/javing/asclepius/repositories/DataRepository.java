@@ -1,5 +1,6 @@
 package com.javing.asclepius.repositories;
 
+import com.javing.asclepius.domain.Coordinates;
 import com.javing.asclepius.domain.IpAddress;
 import com.javing.asclepius.domain.SurveyAnswers;
 import io.vavr.control.Try;
@@ -8,13 +9,14 @@ import org.jooq.DSLContext;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static com.javing.asclepius.tables.Surveys.SURVEYS;
 import static java.sql.Timestamp.valueOf;
 
 @AllArgsConstructor
 @Repository
-public class SurveysRepository {
+public class DataRepository {
 
     private final DSLContext dslContext;
 
@@ -25,5 +27,10 @@ public class SurveysRepository {
                         answers.getSex(), answers.getStatus(), answers.isChronic(), answers.isIsolating(), valueOf(LocalDateTime.now()))
                 .returning(SURVEYS.SURVEY_PK)
                 .fetchOne().getValue(SURVEYS.SURVEY_PK).toString());
+    }
+
+    public List<Coordinates> all() {
+        return dslContext.select(SURVEYS.LATITUDE, SURVEYS.LONGITUDE)
+                .from(SURVEYS).fetchInto(Coordinates.class);
     }
 }
