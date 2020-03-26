@@ -7,18 +7,15 @@
 -- 6) Check that the tables are created with \dt
 -- 7) use the alias 'g' so that the build triggers the Jooq code generation
 
-CREATE TABLE LOCATIONS(
-    location_pk SERIAL PRIMARY KEY,
+CREATE TABLE SURVEYS(
+    survey_pk SERIAL PRIMARY KEY,
     latitude TEXT,
-    longitude TEXT
-);
-
-CREATE TABLE PERSONS(
-    persons_pk SERIAL PRIMARY KEY,
-    location_pk INTEGER REFERENCES LOCATIONS (location_pk),
+    longitude TEXT,
+    ip TEXT,
     age INTEGER,
     sex TEXT,
-    infected BOOLEAN,
-    alive BOOLEAN,
-    chronic BOOLEAN
+    status TEXT,
+    chronic BOOLEAN,
+    isolating BOOLEAN,
+    date_time TIMESTAMP
 );
