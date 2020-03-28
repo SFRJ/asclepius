@@ -1,0 +1,8 @@
+{
+  "age": 30,
+  "sex": "muski",
+  "status":"Nemam simptomi",
+  "isChronic": true,
+  "isKeyWorker": true,
+  "isIsolating": true
+}

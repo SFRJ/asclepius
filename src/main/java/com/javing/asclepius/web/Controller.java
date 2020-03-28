@@ -2,6 +2,7 @@ package com.javing.asclepius.web;
 
 import com.javing.asclepius.domain.Coordinates;
 import com.javing.asclepius.domain.SurveyAnswers;
+import com.javing.asclepius.services.AnswersValidationService;
 import com.javing.asclepius.services.DataManagementService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,13 +18,18 @@ import java.util.List;
 public class Controller {
 
     private final DataManagementService dataManagementService;
+    private final AnswersValidationService answersValidationService;
 
     @RequestMapping(value = "/surveys/new", consumes = "application/json", method = RequestMethod.POST)
     public ResponseEntity<String> newSurvey(@RequestBody SurveyAnswers surveyAnswers, HttpServletRequest request) {
 
-        return ResponseEntity.ok()
-                .body(dataManagementService
-                        .newSurvey(request.getRemoteAddr(), surveyAnswers));
+        if(answersValidationService.isValid(surveyAnswers)) {
+            return ResponseEntity.ok()
+                    .body(dataManagementService
+                            .newSurvey(request.getRemoteAddr(), surveyAnswers));
+        }
+
+        return ResponseEntity.badRequest().build();
     }
 
     @RequestMapping(value = "/coordinates", produces = "application/json", method = RequestMethod.GET)
