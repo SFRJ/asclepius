@@ -21,10 +21,10 @@ public class DataRepository {
     private final DSLContext dslContext;
 
     public Try<String> newSurvey(SurveyAnswers answers, final IpAddress address) {
-        return Try.of(() -> dslContext.insertInto(SURVEYS, SURVEYS.LATITUDE, SURVEYS.LONGITUDE,
+        return Try.of(() -> dslContext.insertInto(SURVEYS, SURVEYS.LATITUDE, SURVEYS.LONGITUDE, SURVEYS.COUNTRY, SURVEYS.CITY,
                 SURVEYS.IP, SURVEYS.AGE, SURVEYS.SEX, SURVEYS.STATUS, SURVEYS.CHRONIC, SURVEYS.ISOLATING, SURVEYS.DATE_TIME)
-                .values(address.getLatitude(), address.getLongitude(), address.getIp(), answers.getAge(),
-                        answers.getSex(), answers.getStatus(), answers.isChronic(), answers.isIsolating(), valueOf(LocalDateTime.now()))
+                .values(address.getLatitude(), address.getLongitude(), address.getCountry(), address.getCity(), address.getIp(),
+                        answers.getAge(), answers.getSex(), answers.getStatus(), answers.isChronic(), answers.isIsolating(), valueOf(LocalDateTime.now()))
                 .returning(SURVEYS.SURVEY_PK)
                 .fetchOne().getValue(SURVEYS.SURVEY_PK).toString());
     }

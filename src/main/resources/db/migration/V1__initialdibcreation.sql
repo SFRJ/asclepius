@@ -11,6 +11,8 @@ CREATE TABLE SURVEYS(
     survey_pk SERIAL PRIMARY KEY,
     latitude TEXT,
     longitude TEXT,
+    country TEXT,
+    city TEXT,
     ip TEXT,
     age INTEGER,
     sex TEXT,

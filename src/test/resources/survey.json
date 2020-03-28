@@ -1,0 +1,82 @@
+{
+  "pages": [
+    {
+      "name": "page1",
+      "elements": [
+        {
+          "type": "text",
+          "name": "question1",
+          "title": "Koliko ste star?",
+          "isRequired": true,
+          "validators": [
+            {
+              "type": "numeric",
+              "text": "pogrešan unos!",
+              "minValue": 0,
+              "maxValue": 120
+            }
+          ],
+          "inputType": "number"
+        },
+        {
+          "type": "radiogroup",
+          "name": "question2",
+          "title": "Koji je vaš rod?",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": "item1",
+              "text": "muški"
+            },
+            {
+              "value": "item2",
+              "text": "ženski"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "question3",
+          "title": " Imate li kroničnu bolest?",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": "item1",
+              "text": "Da"
+            },
+            {
+              "value": "item2",
+              "text": "Ne"
+            }
+          ]
+        },
+        {
+          "type": "dropdown",
+          "name": "question4",
+          "title": "Kakav je vaš trenutni status u vezi s virusom Korona-19?",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": "item2",
+              "text": "Nemam simptomi"
+            },
+            {
+              "value": "item3",
+              "text": "Imam simptomi ali nisam uradio test"
+            },
+            {
+              "value": "item4",
+              "text": "Testirao sam pozitivno"
+            },
+            {
+              "value": "item5",
+              "text": "Testirao sam negativno"
+            }
+          ]
+        }
+      ],
+      "title": " Anketa o virusu Korona-19",
+      "description": " Molimo odgovorite na sljedeća pitanja"
+    }
+  ]
+}
