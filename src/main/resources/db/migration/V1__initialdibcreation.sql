@@ -19,5 +19,6 @@ CREATE TABLE SURVEYS(
     status TEXT,
     chronic BOOLEAN,
     isolating BOOLEAN,
+    keyworker BOOLEAN,
     date_time TIMESTAMP
 );

@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import java.util.List;
 
-import static com.javing.asclepius.services.IpFinder.getClientIp;
-
 @RestController
 @RequiredArgsConstructor
 public class Controller {
@@ -23,13 +21,9 @@ public class Controller {
     @RequestMapping(value = "/surveys/new", consumes = "application/json", method = RequestMethod.POST)
     public ResponseEntity<String> newSurvey(@RequestBody SurveyAnswers surveyAnswers, HttpServletRequest request) {
 
-        String ipAddress = getClientIp((request));
-        if(ipAddress == null || ipAddress.equals("0:0:0:0:0:0:0:1"))
-            return ResponseEntity.notFound().build();
-
         return ResponseEntity.ok()
                 .body(dataManagementService
-                        .newSurvey(ipAddress, surveyAnswers));
+                        .newSurvey(request.getRemoteAddr(), surveyAnswers));
     }
 
     @RequestMapping(value = "/coordinates", produces = "application/json", method = RequestMethod.GET)

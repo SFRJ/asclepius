@@ -7,7 +7,7 @@ public final class IpFinder {
 
     private IpFinder() {}
 
-    public static String getClientIp(HttpServletRequest request) {//TODO continue here see why not getting correct IP
+    public static String getClientIp(HttpServletRequest request) {
         String xForwardedForHeader = request.getHeader("X-Forwarded-For");
         if (xForwardedForHeader == null) {
             return request.getRemoteAddr();
