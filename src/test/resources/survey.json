@@ -37,7 +37,7 @@
         {
           "type": "radiogroup",
           "name": "question3",
-          "title": " Imate li kroničnu bolest?",
+          "title": "Imate li kroničnu bolest?",
           "isRequired": true,
           "choices": [
             {
