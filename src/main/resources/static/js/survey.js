@@ -11,12 +11,12 @@ var surveyDto = {
 
 survey.controller('surveyController', function($scope, $http) {
 
-    $scope.submitSurvey = function(answers) {
+    $scope.submit = function() {
 
         $http(
             method: 'POST',
             url: 'http://localhost:8080/add',
-            data: answers,
+            data: surveyDto,
             headers: {'Content-Type': 'application/json;charset-UTF-8'}
         );
 
