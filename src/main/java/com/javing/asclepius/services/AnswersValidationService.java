@@ -9,9 +9,8 @@ public class AnswersValidationService {
     public Boolean isValid(SurveyAnswers answers) {
 
         return answers.getAge() != null &&
-                answers.getIsChronic() != null &&
-                answers.getIsIsolating() != null &&
-                answers.getIsKeyWorker() != null &&
+                answers.getChronic() != null &&
+                answers.getKeyworker() != null &&
                 answers.getSex() != null &&
                 !answers.getSex().isEmpty() &&
                 answers.getStatus() != null &&

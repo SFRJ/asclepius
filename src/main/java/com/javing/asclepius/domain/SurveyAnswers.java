@@ -8,8 +8,7 @@ public final class SurveyAnswers {
     private final Integer age;
     private final String sex;
     private final String status;
-    private final Boolean isChronic;
-    private final Boolean isKeyWorker;
-    private final Boolean isIsolating;
+    private final Boolean chronic;
+    private final Boolean keyworker;
 
 }
