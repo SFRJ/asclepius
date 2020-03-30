@@ -19,38 +19,40 @@
 
     <div id="survey">
 
-        <label for="age" >Koliko ste star?: </label><br />
-        <input type="text" id="age" ng-model="surveyDto.age" /> <br />
+        <form ng-submit="submit()" ng-controller="surveyController">
 
-        <label for="sex" >Koji je vaš rod?</label> <br />
-        <select id="sex" ng-model="surveyDto.sex">
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-        </select><br /> <br />
+            <label for="age" >Koliko ste star?: </label><br />
+            <input type="text" id="age" ng-model="surveyDto.age" /> <br />
 
-        <span>Imate li kroničnu bolest?:</span><br />
-        <label><input value="Da" type="radio" name="isChronic" ng-model="surveyDto.isChronic" />Da</label><br />
-        <label><input value="Ne" type="radio" name="isChronic" ng-model="surveyDto.isChronic" />Ne</label> <br /><br />
+            <label for="sex" >Koji je vaš rod?</label> <br />
+            <select id="sex" ng-model="surveyDto.sex">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select><br /> <br />
 
-        <label for="status" >Kakav je vaš trenutni status u vezi s virusom Korona-19?</label> <br />
-        <select id="status" ng-model="surveyDto.status">
-            <option value="Nemam simptomi">Nemam simptomi</option>
-            <option value="Imam simptomi ali nisam uradio test">Imam simptomi ali nisam uradio test</option>
-            <option value="Testirao sam pozitivno">Testirao sam pozitivno</option>
-            <option value="Testirao sam negativno">Testirao sam negativno</option>
-        </select><br /> <br />
+            <span>Imate li kroničnu bolest?:</span><br />
+            <label><input value="Da" type="radio" name="isChronic" ng-model="surveyDto.isChronic" />Da</label><br />
+            <label><input value="Ne" type="radio" name="isChronic" ng-model="surveyDto.isChronic" />Ne</label> <br /><br />
 
-        <span>Radite li u javnom sektoru?:</span><br />
-        <label><input value="Da" type="radio" name="isKeyWorker" ng-model="surveyDto.isKeyWorker" />Da</label><br />
-        <label><input value="Ne" type="radio" name="isKeyWorker" ng-model="surveyDto.isKeyWorker" />Ne</label> <br /><br />
+            <label for="status" >Kakav je vaš trenutni status u vezi s virusom Korona-19?</label> <br />
+            <select id="status" ng-model="surveyDto.status">
+                <option value="Nemam simptomi">Nemam simptomi</option>
+                <option value="Imam simptomi ali nisam uradio test">Imam simptomi ali nisam uradio test</option>
+                <option value="Testirao sam pozitivno">Testirao sam pozitivno</option>
+                <option value="Testirao sam negativno">Testirao sam negativno</option>
+            </select><br /> <br />
 
-        <span>Da li radite u javnom sektoru?:</span><br />
-        <label><input value="Da" type="radio" name="isKeyWorker" ng-model="surveyDto.isKeyWorker" />Da</label><br />
-        <label><input value="Ne" type="radio" name="isKeyWorker" ng-model="surveyDto.isKeyWorker" />Ne</label> <br /><br />
+            <span>Radite li u javnom sektoru?:</span><br />
+            <label><input value="Da" type="radio" name="isKeyWorker" ng-model="surveyDto.isKeyWorker" />Da</label><br />
+            <label><input value="Ne" type="radio" name="isKeyWorker" ng-model="surveyDto.isKeyWorker" />Ne</label> <br /><br />
 
-        <input type="submit" value="Submit" />
-        <input type="reset" ng-click="resetForm()" value="Reset" />
+            <span>Da li radite u javnom sektoru?:</span><br />
+            <label><input value="Da" type="radio" name="isKeyWorker" ng-model="surveyDto.isKeyWorker" />Da</label><br />
+            <label><input value="Ne" type="radio" name="isKeyWorker" ng-model="surveyDto.isKeyWorker" />Ne</label> <br /><br />
 
+            <input type="submit" value="Submit" />
+
+        </form>
     </div>
 
 </body>
