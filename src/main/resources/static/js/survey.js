@@ -15,20 +15,10 @@ survey.controller('surveyController', function($scope, $http) {
         $http(
                 {
                     method: 'POST',
-                    url: 'http://localhost:8080/add',
+                    url: 'http://localhost:8080/surveys/new',
                     data: surveyDto,
                     headers: {'Content-Type': 'application/json;charset-UTF-8'}
                 }
-        ).subscribe(
-                 (val) => {
-                     console.log("POST call successful value returned in body",
-                                 val);
-                 },
-                 response => {
-                     console.log("POST call in error", response);
-                 },
-                 () => {
-                     console.log("The POST observable is now completed.");
-                 });
+        );
     };
 });
