@@ -16,7 +16,8 @@ survey.controller('surveyController', function($scope, $http) {
                 {
                     method: 'POST',
                     url: 'http://localhost:8080/surveys/new',
-                    data: surveyDto
+                    data: surveyDto,
+                    headers: {'Content-Type': 'application/json'}
                 }
         );
     };
