@@ -17,9 +17,9 @@
 </head>
 <body ng-controller="surveyController">
 
-    <div id="survey">
+    <div>
 
-        <form ng-submit="submit()" ng-controller="surveyController">
+        <form ng-submit="sendAnswers()" ng-controller="surveyController">
 
             <label for="age" >Koliko ste star?: </label><br />
             <input type="text" id="age" ng-model="surveyDto.age" /> <br />
