@@ -20,13 +20,13 @@ public class Controller {
     private final DataManagementService dataManagementService;
     private final AnswersValidationService answersValidationService;
 
-    @RequestMapping(value = "/surveys/new", consumes = "application/json", method = RequestMethod.POST)
-    public ResponseEntity<String> newSurvey(@RequestBody SurveyAnswers surveyAnswers, HttpServletRequest request) {
+    @RequestMapping(value = "/surveys/new", consumes = "application/json", produces = "application/json", method = RequestMethod.POST)
+    public ResponseEntity<NewSurveyResponse> newSurvey(@RequestBody SurveyAnswers surveyAnswers, HttpServletRequest request) {
 
         if(answersValidationService.isValid(surveyAnswers)) {
             return ResponseEntity.ok()
-                    .body(dataManagementService
-                            .newSurvey(request.getRemoteAddr(), surveyAnswers));
+                    .body(new NewSurveyResponse(dataManagementService
+                            .newSurvey(request.getRemoteAddr(), surveyAnswers)));
         }
 
         return ResponseEntity.badRequest().build();
